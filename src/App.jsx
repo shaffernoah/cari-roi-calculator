@@ -134,12 +134,13 @@ function InputField({ label, value, onChange, prefix, suffix, step, min, max, to
           step={step || 1}
           min={min}
           max={max}
-          className="w-full px-2 py-1.5 text-sm focus:outline-none"
+          className="w-full px-2 py-1.5 text-sm focus:outline-none focus:ring-1"
           style={{
             fontFamily: BRAND.font,
             background: 'rgba(0, 0, 0, 0.3)',
             border: '1px solid rgba(255, 255, 255, 0.2)',
             color: '#FFFFFF',
+            '--tw-ring-color': BRAND.blue,
           }}
         />
         {suffix && (
@@ -449,8 +450,8 @@ export default function App() {
                   letterSpacing: '0.05em',
                   textTransform: 'uppercase',
                   fontSize: '0.75rem',
-                  border: activeScenario === name ? '1px solid #FFFFFF' : '1px solid rgba(255,255,255,0.3)',
-                  background: activeScenario === name ? 'rgba(255,255,255,0.15)' : 'transparent',
+                  border: activeScenario === name ? `1px solid ${BRAND.blue}` : '1px solid rgba(255,255,255,0.3)',
+                  background: activeScenario === name ? 'rgba(134,171,224,0.15)' : 'transparent',
                   color: '#FFFFFF',
                 }}
               >
@@ -685,34 +686,34 @@ export default function App() {
         <div className="flex-1 p-6 overflow-y-auto lg:h-[calc(100vh-72px)]">
           {/* Top-line KPIs */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            <div className="pl-4 py-3 rounded" style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.15)', borderLeft: `4px solid ${isNegative ? '#f87171' : '#4ade80'}` }}>
-              <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: BRAND.iconGray }}>
+            <div className="pl-4 py-3 rounded" style={{ background: 'rgba(255,255,255,0.35)', borderTop: '1px solid rgba(0,0,0,0.08)', borderRight: '1px solid rgba(0,0,0,0.08)', borderBottom: '1px solid rgba(0,0,0,0.08)', borderLeft: `4px solid ${isNegative ? '#dc2626' : '#16a34a'}` }}>
+              <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: '#000000' }}>
                 Net Annual Value
               </p>
-              <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.035em', fontSize: '1.875rem', color: isNegative ? '#f87171' : '#FFFFFF' }}>
+              <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.035em', fontSize: '1.875rem', color: isNegative ? '#dc2626' : '#000000' }}>
                 {fmtDollar(calc.netValue)}
               </p>
               {isNegative && (
-                <p style={{ fontFamily: BRAND.font, fontSize: '0.75rem', color: '#f87171', marginTop: '0.25rem' }}>Negative ROI — review assumptions</p>
+                <p style={{ fontFamily: BRAND.font, fontSize: '0.75rem', color: '#dc2626', marginTop: '0.25rem' }}>Negative ROI — review assumptions</p>
               )}
             </div>
-            <div className="pl-4 py-3 rounded" style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.15)', borderLeft: '4px solid rgba(255,255,255,0.4)' }}>
-              <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: BRAND.iconGray }}>
+            <div className="pl-4 py-3 rounded" style={{ background: 'rgba(255,255,255,0.35)', borderTop: '1px solid rgba(0,0,0,0.08)', borderRight: '1px solid rgba(0,0,0,0.08)', borderBottom: '1px solid rgba(0,0,0,0.08)', borderLeft: `4px solid ${BRAND.blue}` }}>
+              <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: '#000000' }}>
                 ROI Multiple
               </p>
-              <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.035em', fontSize: '1.875rem', color: '#FFFFFF' }}>
+              <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.035em', fontSize: '1.875rem', color: '#000000' }}>
                 {fmtMultiple(calc.roiMultiple)}
               </p>
-              <p style={{ fontFamily: BRAND.font, fontSize: '0.75rem', color: BRAND.iconGray, marginTop: '0.25rem' }}>gross value / Cari cost</p>
+              <p style={{ fontFamily: BRAND.font, fontSize: '0.75rem', color: 'rgba(0,0,0,0.5)', marginTop: '0.25rem' }}>gross value / Cari cost</p>
             </div>
-            <div className="pl-4 py-3 rounded" style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.15)', borderLeft: '4px solid rgba(255,255,255,0.4)' }}>
-              <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: BRAND.iconGray }}>
+            <div className="pl-4 py-3 rounded" style={{ background: 'rgba(255,255,255,0.35)', borderTop: '1px solid rgba(0,0,0,0.08)', borderRight: '1px solid rgba(0,0,0,0.08)', borderBottom: '1px solid rgba(0,0,0,0.08)', borderLeft: `4px solid ${BRAND.blue}` }}>
+              <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: '#000000' }}>
                 Payback Period
               </p>
-              <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.035em', fontSize: '1.875rem', color: '#FFFFFF' }}>
+              <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.035em', fontSize: '1.875rem', color: '#000000' }}>
                 {fmtMonths(calc.paybackMonths)}
               </p>
-              <p style={{ fontFamily: BRAND.font, fontSize: '0.75rem', color: BRAND.iconGray, marginTop: '0.25rem' }}>to recoup annual Cari cost</p>
+              <p style={{ fontFamily: BRAND.font, fontSize: '0.75rem', color: 'rgba(0,0,0,0.5)', marginTop: '0.25rem' }}>to recoup annual Cari cost</p>
             </div>
           </div>
 
@@ -731,7 +732,7 @@ export default function App() {
                 <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: BRAND.iconGray }}>
                   Projected AR Balance
                 </p>
-                <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.02em', fontSize: '1.125rem', color: '#FFFFFF' }}>
+                <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.02em', fontSize: '1.125rem', color: BRAND.blue }}>
                   {fmtDollar(calc.arCari)}
                 </p>
               </div>
@@ -749,79 +750,79 @@ export default function App() {
           {/* Two-column breakdown charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
             {/* DSO Value Breakdown */}
-            <div className="p-4 rounded" style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.1)' }}>
-              <h3 style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.7rem', color: '#FFFFFF', marginBottom: '0.75rem' }}>
+            <div className="p-4 rounded" style={{ background: 'rgba(255,255,255,0.3)', border: '1px solid rgba(0,0,0,0.08)' }}>
+              <h3 style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.7rem', color: '#000000', marginBottom: '0.75rem' }}>
                 DSO Compression Value: {fmtDollar(calc.dsoTotal)}
               </h3>
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={dsoBreakdownData} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
                   <XAxis
                     dataKey="name"
-                    tick={{ fontSize: 10, fill: BRAND.iconGray, fontFamily: BRAND.font }}
+                    tick={{ fontSize: 10, fill: '#000000', fontFamily: BRAND.font }}
                     interval={0}
                   />
                   <YAxis
-                    tick={{ fontSize: 10, fill: BRAND.iconGray, fontFamily: BRAND.font }}
+                    tick={{ fontSize: 10, fill: 'rgba(0,0,0,0.5)', fontFamily: BRAND.font }}
                     tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
                   />
                   <Tooltip formatter={(v) => fmtDollar(v)} />
                   <Bar dataKey="value" name="Value" radius={[2, 2, 0, 0]}>
                     {dsoBreakdownData.map((_, i) => (
-                      <Cell key={i} fill={['#E8E8E8', '#C0C0C0', '#A8A8A8', '#888888'][i]} />
+                      <Cell key={i} fill={['#86ABE0', '#6B96D4', '#A8C4EB', '#5A82BF'][i]} />
                     ))}
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
               <div className="mt-2 space-y-1 pl-1" style={{ fontSize: '0.75rem' }}>
-                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: BRAND.iconGray }}>
-                  <span>Financing savings</span><span style={{ fontWeight: '700', color: '#FFFFFF' }}>{fmtDollar(calc.financingSavings)}</span>
+                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: 'rgba(0,0,0,0.5)' }}>
+                  <span>Financing savings</span><span style={{ fontWeight: '700', color: '#000000' }}>{fmtDollar(calc.financingSavings)}</span>
                 </div>
-                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: BRAND.iconGray }}>
-                  <span>Bad debt savings</span><span style={{ fontWeight: '700', color: '#FFFFFF' }}>{fmtDollar(calc.badDebtSavings)}</span>
+                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: 'rgba(0,0,0,0.5)' }}>
+                  <span>Bad debt savings</span><span style={{ fontWeight: '700', color: '#000000' }}>{fmtDollar(calc.badDebtSavings)}</span>
                 </div>
-                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: BRAND.iconGray }}>
-                  <span>AR insurance savings</span><span style={{ fontWeight: '700', color: '#FFFFFF' }}>{fmtDollar(calc.arInsuranceSavings)}</span>
+                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: 'rgba(0,0,0,0.5)' }}>
+                  <span>AR insurance savings</span><span style={{ fontWeight: '700', color: '#000000' }}>{fmtDollar(calc.arInsuranceSavings)}</span>
                 </div>
-                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: BRAND.iconGray }}>
-                  <span>Collections savings</span><span style={{ fontWeight: '700', color: '#FFFFFF' }}>{fmtDollar(calc.collectionsSavings)}</span>
+                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: 'rgba(0,0,0,0.5)' }}>
+                  <span>Collections savings</span><span style={{ fontWeight: '700', color: '#000000' }}>{fmtDollar(calc.collectionsSavings)}</span>
                 </div>
               </div>
             </div>
 
             {/* Trade Spend Value Breakdown */}
-            <div className="p-4 rounded" style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.1)' }}>
-              <h3 style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.7rem', color: '#FFFFFF', marginBottom: '0.75rem' }}>
+            <div className="p-4 rounded" style={{ background: 'rgba(255,255,255,0.3)', border: '1px solid rgba(0,0,0,0.08)' }}>
+              <h3 style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.7rem', color: '#000000', marginBottom: '0.75rem' }}>
                 Trade Spend Optimization: {fmtDollar(calc.tradeSpendTotal)}
               </h3>
               <ResponsiveContainer width="100%" height={220}>
                 <BarChart data={tradeBreakdownData} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
                   <XAxis
                     dataKey="name"
-                    tick={{ fontSize: 10, fill: BRAND.iconGray, fontFamily: BRAND.font }}
+                    tick={{ fontSize: 10, fill: '#000000', fontFamily: BRAND.font }}
                     interval={0}
                   />
                   <YAxis
-                    tick={{ fontSize: 10, fill: BRAND.iconGray, fontFamily: BRAND.font }}
+                    tick={{ fontSize: 10, fill: 'rgba(0,0,0,0.5)', fontFamily: BRAND.font }}
                     tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
                   />
                   <Tooltip formatter={(v) => fmtDollar(v)} />
                   <Bar dataKey="value" name="Value" radius={[2, 2, 0, 0]}>
                     {tradeBreakdownData.map((_, i) => (
-                      <Cell key={i} fill={['#E8E8E8', '#C0C0C0'][i]} />
+                      <Cell key={i} fill={['#86ABE0', '#6B96D4'][i]} />
                     ))}
                   </Bar>
                 </BarChart>
               </ResponsiveContainer>
               <div className="mt-2 space-y-1 pl-1" style={{ fontSize: '0.75rem' }}>
-                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: BRAND.iconGray }}>
-                  <span>Spend efficiency gain</span><span style={{ fontWeight: '700', color: '#FFFFFF' }}>{fmtDollar(calc.spendEfficiencyGain)}</span>
+                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: 'rgba(0,0,0,0.5)' }}>
+                  <span>Spend efficiency gain</span><span style={{ fontWeight: '700', color: '#000000' }}>{fmtDollar(calc.spendEfficiencyGain)}</span>
                 </div>
-                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: BRAND.iconGray }}>
-                  <span>Incremental margin (@ 25% GM)</span><span style={{ fontWeight: '700', color: '#FFFFFF' }}>{fmtDollar(calc.incrementalMargin)}</span>
+                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: 'rgba(0,0,0,0.5)' }}>
+                  <span>Incremental margin (@ 25% GM)</span><span style={{ fontWeight: '700', color: '#000000' }}>{fmtDollar(calc.incrementalMargin)}</span>
                 </div>
-                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: 'rgba(169,169,169,0.6)' }}>
+                <div className="flex justify-between" style={{ fontFamily: BRAND.font, color: 'rgba(0,0,0,0.3)' }}>
                   <span>Incremental revenue (top-line)</span>
                   <span>{fmtDollar(calc.incrementalRevenue)}</span>
                 </div>
@@ -830,27 +831,27 @@ export default function App() {
           </div>
 
           {/* Waterfall Chart */}
-          <div className="mb-6 p-4 rounded" style={{ background: 'rgba(0,0,0,0.2)', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <h3 style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.7rem', color: '#FFFFFF', marginBottom: '0.75rem' }}>
+          <div className="mb-6 p-4 rounded" style={{ background: 'rgba(255,255,255,0.3)', border: '1px solid rgba(0,0,0,0.08)' }}>
+            <h3 style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.7rem', color: '#000000', marginBottom: '0.75rem' }}>
               Cost vs. Value Waterfall
             </h3>
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={waterfallData} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.1)" />
+                <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.1)" />
                 <XAxis
                   dataKey="name"
-                  tick={{ fontSize: 9, fill: BRAND.iconGray, fontFamily: BRAND.font }}
+                  tick={{ fontSize: 9, fill: '#000000', fontFamily: BRAND.font }}
                   interval={0}
                   angle={-25}
                   textAnchor="end"
                   height={65}
                 />
                 <YAxis
-                  tick={{ fontSize: 10, fill: BRAND.iconGray, fontFamily: BRAND.font }}
+                  tick={{ fontSize: 10, fill: 'rgba(0,0,0,0.5)', fontFamily: BRAND.font }}
                   tickFormatter={(v) => `$${(v / 1000).toFixed(0)}k`}
                 />
                 <Tooltip content={<WaterfallTooltip />} />
-                <ReferenceLine y={0} stroke="rgba(255,255,255,0.2)" />
+                <ReferenceLine y={0} stroke="rgba(0,0,0,0.2)" />
                 <Bar dataKey="invisible" stackId="waterfall" fill="transparent" />
                 <Bar dataKey="bar" stackId="waterfall" name="Value" radius={[2, 2, 0, 0]}>
                   {waterfallData.map((entry, i) => (
@@ -858,8 +859,8 @@ export default function App() {
                       key={i}
                       fill={
                         entry.isNet
-                          ? (entry.isPositive ? '#4ade80' : '#f87171')
-                          : (entry.isPositive ? '#E8E8E8' : '#f87171')
+                          ? (entry.isPositive ? '#16a34a' : '#dc2626')
+                          : (entry.isPositive ? '#86ABE0' : '#dc2626')
                       }
                     />
                   ))}
@@ -869,37 +870,37 @@ export default function App() {
           </div>
 
           {/* Bottom summary */}
-          <div className="pt-4 mb-4" style={{ borderTop: '1px solid rgba(255,255,255,0.15)' }}>
+          <div className="pt-4 mb-4" style={{ borderTop: '1px solid rgba(0,0,0,0.15)' }}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div>
-                <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: BRAND.iconGray }}>
+                <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: 'rgba(0,0,0,0.5)' }}>
                   Gross Annual Value
                 </p>
-                <p style={{ fontFamily: BRAND.font, fontWeight: '700', fontSize: '0.875rem', color: '#FFFFFF' }}>
+                <p style={{ fontFamily: BRAND.font, fontWeight: '700', fontSize: '0.875rem', color: '#000000' }}>
                   {fmtDollar(calc.grossValue)}
                 </p>
               </div>
               <div>
-                <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: BRAND.iconGray }}>
+                <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: 'rgba(0,0,0,0.5)' }}>
                   Annual Cari Cost
                 </p>
-                <p style={{ fontFamily: BRAND.font, fontWeight: '700', fontSize: '0.875rem', color: '#f87171' }}>
+                <p style={{ fontFamily: BRAND.font, fontWeight: '700', fontSize: '0.875rem', color: '#dc2626' }}>
                   {fmtDollar(calc.cariCost)}
                 </p>
               </div>
               <div>
-                <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: BRAND.iconGray }}>
+                <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: 'rgba(0,0,0,0.5)' }}>
                   Net Value / Account
                 </p>
-                <p style={{ fontFamily: BRAND.font, fontWeight: '700', fontSize: '0.875rem', color: calc.perAccountValue >= 0 ? '#4ade80' : '#f87171' }}>
+                <p style={{ fontFamily: BRAND.font, fontWeight: '700', fontSize: '0.875rem', color: calc.perAccountValue >= 0 ? '#16a34a' : '#dc2626' }}>
                   {fmtDollar(calc.perAccountValue)}
                 </p>
               </div>
               <div>
-                <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: BRAND.iconGray }}>
+                <p style={{ fontFamily: BRAND.font, fontWeight: '700', letterSpacing: '0.05em', textTransform: 'uppercase', fontSize: '0.65rem', color: 'rgba(0,0,0,0.5)' }}>
                   Cari Cost / Account
                 </p>
-                <p style={{ fontFamily: BRAND.font, fontWeight: '700', fontSize: '0.875rem', color: '#FFFFFF' }}>
+                <p style={{ fontFamily: BRAND.font, fontWeight: '700', fontSize: '0.875rem', color: '#000000' }}>
                   {fmtDollar(calc.perAccountCost)}
                 </p>
               </div>
@@ -907,11 +908,11 @@ export default function App() {
           </div>
 
           {/* Assumptions footnotes */}
-          <div className="pt-3 space-y-0.5" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-            <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.01em', fontSize: '0.75rem', color: 'rgba(169,169,169,0.7)' }}>
+          <div className="pt-3 space-y-0.5" style={{ borderTop: '1px solid rgba(0,0,0,0.1)' }}>
+            <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.01em', fontSize: '0.75rem', color: 'rgba(0,0,0,0.4)' }}>
               Assumptions: 25% gross margin applied to incremental volume. 40% collections cost reduction from automated payment incentives. AR insurance savings scale proportionally with bad debt reduction.
             </p>
-            <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.01em', fontSize: '0.75rem', color: 'rgba(169,169,169,0.7)' }}>
+            <p style={{ fontFamily: BRAND.font, fontWeight: '400', letterSpacing: '-0.01em', fontSize: '0.75rem', color: 'rgba(0,0,0,0.4)' }}>
               All projections are estimates. Actual results depend on customer adoption, payment behavior changes, and market conditions.
             </p>
           </div>
